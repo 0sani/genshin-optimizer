@@ -92,12 +92,19 @@ export function EquippedGrid({
             <WeaponCard
               weaponId={weaponId}
               onEdit={showWeapon}
-              extraButtons={
+              extraButtons={[
                 <WeaponSwapButton
+                  key={'swap'}
                   weaponTypeKey={weaponTypeKey}
                   onChangeId={setWeapon}
-                />
-              }
+                />,
+                <WeaponRemoveButton
+                  key={'remove'}
+                  onClick={() => {
+                    setWeapon('')
+                  }}
+                />,
+              ]}
             />
           ) : (
             <WeaponSwapCard
@@ -114,10 +121,12 @@ export function EquippedGrid({
                   artifactId={id}
                   extraButtons={[
                     <ArtifactSwapButton
+                      key={'swap'}
                       slotKey={slotKey}
                       onChangeId={(id) => setArtifact(slotKey, id)}
                     />,
                     <ArtifactRemoveButton
+                      key={'remove'}
                       onClick={() => {
                         setArtifact(slotKey, '')
                       }}
@@ -268,18 +277,18 @@ function ArtifactSwapButton({
 }
 function ArtifactRemoveButton({ onClick }: { onClick: () => void }) {
   return (
-      <Tooltip
-        // TODO Localization
-        title={<Typography>Unequip Artifact</Typography>}
-        placement="top"
-        arrow
-      >
-        <span>
-          <Button color="error" size="small" onClick={onClick}>
-            <ClearIcon />
-          </Button>
-        </span>
-      </Tooltip>
+    <Tooltip
+      // TODO Localization
+      title={<Typography>Unequip Artifact</Typography>}
+      placement="top"
+      arrow
+    >
+      <span>
+        <Button color="error" size="small" onClick={onClick}>
+          <ClearIcon />
+        </Button>
+      </span>
+    </Tooltip>
   )
 }
 
@@ -313,6 +322,23 @@ function WeaponSwapButton({
     </>
   )
 }
+function WeaponRemoveButton({ onClick }: { onClick: () => void }) {
+  return (
+    <Tooltip
+      // TODO Localization
+      title={<Typography>Unequip Weapon</Typography>}
+      placement="top"
+      arrow
+    >
+      <span>
+        <Button color="error" size="small" onClick={onClick}>
+          <ClearIcon />
+        </Button>
+      </span>
+    </Tooltip>
+  )
+}
+
 function LargeWeaponSwapButton({
   weaponTypeKey,
   onChangeId,

@@ -415,9 +415,7 @@ export function ArtifactCardObj({
                 </span>
               </BootstrapTooltip>
             )}
-            {
-              extraButtons // TODO fix the error that this line is throwing
-            }
+            {extraButtons}
           </Box>
         </Box>
       </CardThemed>

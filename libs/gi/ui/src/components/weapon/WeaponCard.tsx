@@ -42,7 +42,7 @@ type Props = {
   onEdit?: (weaponId: string) => void
   onDelete?: (weaponId: string) => void
   canEquip?: boolean
-  extraButtons?: JSX.Element
+  extraButtons?: JSX.Element[]
 }
 export function WeaponCard(props: Props & { weaponId: string }) {
   const { weaponId, ...rest } = props

@@ -249,7 +249,7 @@ export function WeaponSwapModal({
                   <WeaponCard
                     weaponId={weaponId}
                     onClick={clickHandler}
-                    extraButtons={<CompareBuildButton weaponId={weaponId} />}
+                    extraButtons={[<CompareBuildButton weaponId={weaponId} />]}
                   />
                 </Grid>
               ))}
