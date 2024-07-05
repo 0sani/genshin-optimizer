@@ -186,7 +186,7 @@ export function ArtifactSwapModal({
                   <Grid item key={id} xs={1}>
                     <ArtifactCard
                       artifactId={id}
-                      extraButtons={<CompareBuildButton artId={id} />}
+                      extraButtons={[<CompareBuildButton artId={id} />]}
                       onClick={() => {
                         onChangeId(id)
                         onClose()

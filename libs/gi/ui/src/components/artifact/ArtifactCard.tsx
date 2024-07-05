@@ -67,7 +67,7 @@ type Data = {
   setLocation?: (lk: LocationKey) => void
   mainStatAssumptionLevel?: number
   effFilter?: Set<SubstatKey>
-  extraButtons?: JSX.Element
+  extraButtons?: JSX.Element[]
   excluded?: boolean
 }
 const allSubstatFilter = new Set(allSubstatKeys)
@@ -415,7 +415,9 @@ export function ArtifactCardObj({
                 </span>
               </BootstrapTooltip>
             )}
-            {extraButtons}
+            {
+              extraButtons // TODO fix the error that this line is throwing
+            }
           </Box>
         </Box>
       </CardThemed>

@@ -9,6 +9,7 @@ import type {
 } from '@genshin-optimizer/gi/consts'
 import { useDatabase } from '@genshin-optimizer/gi/db-ui'
 import { SlotIcon } from '@genshin-optimizer/gi/svgicons'
+import ClearIcon from '@mui/icons-material/Clear'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import {
   Box,
@@ -111,12 +112,17 @@ export function EquippedGrid({
               {id && database.arts.keys.includes(id) ? (
                 <ArtifactCard
                   artifactId={id}
-                  extraButtons={
+                  extraButtons={[
                     <ArtifactSwapButton
                       slotKey={slotKey}
                       onChangeId={(id) => setArtifact(slotKey, id)}
-                    />
-                  }
+                    />,
+                    <ArtifactRemoveButton
+                      onClick={() => {
+                        setArtifact(slotKey, '')
+                      }}
+                    />,
+                  ]}
                   onEdit={() => setArtifactIdToEdit(id)}
                   onLockToggle={() =>
                     database.arts.set(id, ({ lock }) => ({ lock: !lock }))
@@ -260,6 +266,23 @@ function ArtifactSwapButton({
     </>
   )
 }
+function ArtifactRemoveButton({ onClick }: { onClick: () => void }) {
+  return (
+      <Tooltip
+        // TODO Localization
+        title={<Typography>Unequip Artifact</Typography>}
+        placement="top"
+        arrow
+      >
+        <span>
+          <Button color="error" size="small" onClick={onClick}>
+            <ClearIcon />
+          </Button>
+        </span>
+      </Tooltip>
+  )
+}
+
 function WeaponSwapButton({
   weaponTypeKey,
   onChangeId,

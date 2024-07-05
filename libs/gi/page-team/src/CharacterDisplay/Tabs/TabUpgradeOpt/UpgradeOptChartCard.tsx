@@ -66,7 +66,7 @@ export default function UpgradeOptChartCard(props: Props) {
           <ArtifactCard
             artifactId={id}
             onEdit={() => props.setArtifactIdToEdit(id)}
-            extraButtons={<EquipButton newArtId={id} disabled={isEquipped} />}
+            extraButtons={[<EquipButton newArtId={id} disabled={isEquipped} />]}
           />
         </Grid>
         <Grid item xs={12} sm={7} md={8} lg={9} xl={9}>
